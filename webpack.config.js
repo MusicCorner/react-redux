@@ -11,7 +11,6 @@ module.exports = (env) => {
     loader: 'sass-loader',
     options: {
       additionalData: `@import "${GLOBAL_SCSS}";`,
-      // includePaths: [__dirname, 'src']
     },
   };
   
@@ -54,7 +53,11 @@ module.exports = (env) => {
             },
             sassLoader,
           ]
-        }
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+        },
       ],
     },
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsGetUsersProcessing } from 'ducks/example/selectors';
+import img from 'public/svg/circle.svg';
 
 import { exampleSlice } from 'ducks/example/slice';
 
@@ -16,5 +17,10 @@ export const HomeView = () => {
     dispatch(exampleSlice.actions.request());
   }, []);
 
-  return <div className={styles.home}>Home page</div>;
+  return (
+    <div className={styles.home}>
+      Home page
+      {/* <img src={img} alt="img" /> */}
+    </div>
+  );
 };
