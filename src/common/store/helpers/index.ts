@@ -83,4 +83,4 @@ export const isSuccess = (asyncState: _AsyncState<unknown, unknown>) =>
 export const isError = (asyncState: _AsyncState<unknown, unknown>) =>
   !asyncState.isProcessing && !!asyncState.error;
 
-export const pure = (state: unknown) => state;
+export const pure = <T>(state: T) => state;

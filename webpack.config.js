@@ -2,8 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const resolvePath = p => path.resolve(__dirname, p)
+
 module.exports = (env) => {
-  const GLOBAL_SCSS = path.resolve(__dirname, 'src/common/styles/index.scss');
+  const GLOBAL_SCSS = resolvePath('src/common/styles/index.scss');
 
   const isDevelopment = env.development
   
@@ -63,12 +65,22 @@ module.exports = (env) => {
 
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
-      modules: [path.resolve('./src'), 'node_modules']
+      modules: [path.resolve('./src'), 'node_modules'],
+      alias: {
+        '@common': resolvePath('./src/common'),
+        '@components': resolvePath('./src/components'),
+        '@containers': resolvePath('./src/containers'),
+        '@ducks': resolvePath('./src/ducks'),
+        '@public': resolvePath('./src/public'),
+        '@routers': resolvePath('./src/routers'),
+        '@store': resolvePath('./src/store'),
+        '@views': resolvePath('./src/views'),
+      }
     },
 
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: resolvePath('dist'),
     },
 
     devServer: {

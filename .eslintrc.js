@@ -1,6 +1,6 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
+  plugins: ["@typescript-eslint", "prettier", "import", "react", "react-hooks"],
   rules: {
     "@typescript-eslint/no-floating-promises": "off",
     "import/prefer-default-export": "off",
@@ -8,12 +8,34 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/naming-convention": "off",
+    "import/order": [
+      'error',
+      {
+        groups: [['builtin', 'external'], 'internal', ['sibling', 'parent', 'index']],
+        pathGroups: [
+          {
+            pattern: "@reduxjs/**",
+            group: "external",
+          },
+          {
+            pattern: "@redux-saga/**",
+            group: "external",
+          },
+        ],
+        "pathGroupsExcludedImportTypes": ["external"],
+        'newlines-between': 'always',
+        warnOnUnassignedImports: true
+      }
+    ],
     "no-param-reassign": "off",
     "prettier/prettier": [
       "error",
       { singleQuote: true }
     ],
     quotes: [2, "single"]
+  },
+  settings: {
+    "import/internal-regex": "^@.*"
   },
   extends: [
     "eslint:recommended",

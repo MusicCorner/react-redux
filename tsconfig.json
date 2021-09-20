@@ -21,7 +21,7 @@
 		"outDir": "./dist/tsc/",
 		"jsx": "react-jsx",
 		"paths": {
-			"*": ["./src/*"]
+			"@*": ["./src/*"]
 		},
 		"lib": [
 			"ES6",
@@ -37,8 +37,5 @@
 	"exclude": [
 		"./src/node_modules",
 		"**/*.test.ts"
-	],
-	"typeRoots": [
-    "./"
-  ],
+	]
 }

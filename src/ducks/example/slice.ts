@@ -1,5 +1,5 @@
-import { ApiError, ApiUser } from 'common/types/apiTypes';
-import { AsyncState, createAsyncSlice } from '../../common/store/helpers';
+import { ApiError, ApiUser } from '@common/types/apiTypes';
+import { AsyncState, createAsyncSlice } from '@common/store/helpers';
 
 export interface ExampleState extends AsyncState<ApiUser, ApiError> {
   value: number;

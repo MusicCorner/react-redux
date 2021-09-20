@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { sagaMiddleware } from 'common/store/middlewares';
+import { sagaMiddleware } from '@common/store/middlewares';
 
 import { reducers } from './reducers';
 

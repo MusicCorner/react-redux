@@ -1,4 +1,5 @@
 import { takeLatest, put, delay } from 'redux-saga/effects';
+
 import { exampleSlice } from './slice';
 
 function* getUsersSaga() {

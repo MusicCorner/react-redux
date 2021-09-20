@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { ROOT_ROUTES } from 'common/constants/routes';
+import { ROOT_ROUTES } from '@common/constants/routes';
+
 import { HomeView } from '../views/Home';
 
 export const RootRouter = () => (
