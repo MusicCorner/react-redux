@@ -48,7 +48,6 @@
   "scripts": {
     "start": "webpack serve --env development --mode=development",
     "build": "yarn clean && webpack --env production --mode=production",
-    "clean": "rimraf dist/",
     "lint": "eslint . --ext .ts,.tsx",
     "lint-fix": "yarn lint --fix",
     "check-types": "tsc --noEmit",
