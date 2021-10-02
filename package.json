@@ -51,8 +51,8 @@
     "clean": "rimraf dist/",
     "lint": "eslint . --ext .ts,.tsx",
     "lint-fix": "yarn lint --fix",
-    "test-types": "tsc ; yarn clean",
-    "precommit": "yarn lint && yarn test-types",
+    "check-types": "tsc --noEmit",
+    "precommit": "yarn lint && yarn check-types",
     "prepare": "husky install"
   },
   "devDependencies": {
