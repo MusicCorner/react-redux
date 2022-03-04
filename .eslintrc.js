@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint", "prettier", "import", "react", "react-hooks"],
@@ -8,10 +10,18 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/naming-convention": "off",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-autofocus": "off",
     "import/order": [
-      'error',
+      "error",
       {
-        groups: [['builtin', 'external'], 'internal', ['sibling', 'parent', 'index']],
+        groups: [
+          ["builtin", "external"],
+          "internal",
+          ["sibling", "parent", "index"],
+        ],
         pathGroups: [
           {
             pattern: "@reduxjs/**",
@@ -22,20 +32,17 @@ module.exports = {
             group: "external",
           },
         ],
-        "pathGroupsExcludedImportTypes": ["external"],
-        'newlines-between': 'always',
-        warnOnUnassignedImports: true
-      }
+        pathGroupsExcludedImportTypes: ["external"],
+        "newlines-between": "always",
+        warnOnUnassignedImports: true,
+      },
     ],
     "no-param-reassign": "off",
-    "prettier/prettier": [
-      "error",
-      { singleQuote: true }
-    ],
-    quotes: [2, "single"]
+    "prettier/prettier": ["error", { singleQuote: true }],
+    quotes: [2, "single"],
   },
   settings: {
-    "import/internal-regex": "^@.*"
+    "import/internal-regex": "^@.*",
   },
   extends: [
     "eslint:recommended",
@@ -47,6 +54,7 @@ module.exports = {
     "prettier",
   ],
   parserOptions: {
-    project: './tsconfig.json'
+    project: path.resolve(__dirname, "tsconfig.json"),
+    sourceType: "module",
   },
 };
