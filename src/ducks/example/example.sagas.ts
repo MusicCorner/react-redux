@@ -1,6 +1,6 @@
 import { takeLatest, put, delay } from 'redux-saga/effects';
 
-import { exampleSlice } from './slice';
+import { exampleSlice } from './example.slice';
 
 function* getUsersSaga() {
   yield delay(1000);
@@ -8,5 +8,5 @@ function* getUsersSaga() {
 }
 
 export function* exampleSagas() {
-  yield takeLatest(exampleSlice.actionNames.request, getUsersSaga);
+  yield takeLatest(exampleSlice.actions.request, getUsersSaga);
 }

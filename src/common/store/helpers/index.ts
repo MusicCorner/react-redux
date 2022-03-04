@@ -10,7 +10,7 @@ export interface AsyncState<SuccessPayload, ErrorPayload> {
   isProcessing?: boolean;
   isSuccess?: boolean;
   error?: ErrorPayload | null;
-  data?: SuccessPayload | null;
+  value?: SuccessPayload | null;
   [key: string]: unknown;
 }
 
@@ -18,7 +18,7 @@ export interface _AsyncState<SuccessPayload, ErrorPayload> {
   isProcessing: boolean;
   isSuccess: boolean;
   error: ErrorPayload | null;
-  data: SuccessPayload | null;
+  value: SuccessPayload | null;
   [key: string]: unknown;
 }
 
@@ -28,14 +28,18 @@ export interface _CreateSliceOptions<State> {
   name: string;
 }
 
-export const createAsyncSlice = <SuccessPayload, ErrorPayload>(
+export const createAsyncSlice = <
+  RequestPayload,
+  SuccessPayload = undefined,
+  ErrorPayload = undefined
+>(
   options: _CreateSliceOptions<AsyncState<SuccessPayload, ErrorPayload>>
 ) => {
   const initialState: _AsyncState<SuccessPayload, ErrorPayload> = {
     isProcessing: false,
     isSuccess: false,
     error: null,
-    data: null,
+    value: null,
   };
 
   return {
@@ -47,7 +51,13 @@ export const createAsyncSlice = <SuccessPayload, ErrorPayload>(
       },
       name: `async/${options.name}`,
       reducers: {
-        request: (state) => {
+        reset: (state) => {
+          state.isProcessing = false;
+          state.isSuccess = false;
+          state.error = null;
+          state.value = null;
+        },
+        request: (state, _action: PayloadAction<Draft<RequestPayload>>) => {
           state.isProcessing = true;
           state.isSuccess = false;
           state.error = null;
@@ -55,7 +65,7 @@ export const createAsyncSlice = <SuccessPayload, ErrorPayload>(
         success: (state, action: PayloadAction<Draft<SuccessPayload>>) => {
           state.isProcessing = false;
           state.isSuccess = true;
-          state.data = action.payload;
+          state.value = action.payload;
           state.error = null;
         },
         error: (state, action: PayloadAction<Draft<ErrorPayload>>) => {
@@ -66,11 +76,11 @@ export const createAsyncSlice = <SuccessPayload, ErrorPayload>(
         ...options.reducers,
       },
     }),
-    actionNames: {
-      request: `async/${options.name}/request`,
-      success: `async/${options.name}/success`,
-      error: `async/${options.name}/error`,
-    },
+    // actionNames: {
+    //   request: `async/${options.name}/request`,
+    //   success: `async/${options.name}/success`,
+    //   error: `async/${options.name}/error`,
+    // },
   };
 };
 
