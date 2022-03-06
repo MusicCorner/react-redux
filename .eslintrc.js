@@ -38,6 +38,11 @@ module.exports = {
         ],
         pathGroups: [
           {
+            pattern: "react**",
+            group: "external",
+            position: "before"
+          },
+          {
             pattern: "@reduxjs/**",
             group: "external",
           },
@@ -45,8 +50,16 @@ module.exports = {
             pattern: "@redux-saga/**",
             group: "external",
           },
+          {
+            pattern: "@mui/**",
+            group: "external",
+          },
+          {
+            pattern: "@emotion/**",
+            group: "external",
+          },
         ],
-        pathGroupsExcludedImportTypes: ["external"],
+        pathGroupsExcludedImportTypes: ["react"],
         "newlines-between": "always",
         warnOnUnassignedImports: true,
       },
