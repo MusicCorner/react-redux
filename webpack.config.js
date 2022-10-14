@@ -5,14 +5,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const resolvePath = p => path.resolve(__dirname, p)
 
 module.exports = (env) => {
-  const GLOBAL_SCSS = resolvePath('src/common/styles/index.scss');
-
   const isDevelopment = env.development
   
   const sassLoader = {
     loader: 'sass-loader',
     options: {
-      additionalData: `@import "${GLOBAL_SCSS}";`,
+      additionalData: `@import 'common/styles/index.scss';`,
     },
   };
   
