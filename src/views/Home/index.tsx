@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import {
-  selectIsGetUsersProcessing,
-  selectUsersData,
-} from '@ducks/example/example.selectors';
 import circle from '@public/svg/circle.svg';
 import { exampleSlice } from '@ducks/example/example.slice';
 import { User } from '@components/User';
+import { useAppSelector } from '@common/hooks/useAppSelector';
 
 import styles from './index.module.scss';
 
 export const HomeView = () => {
   const dispatch = useDispatch();
-  const isProcessing = useSelector(selectIsGetUsersProcessing);
-  const { id, name } = useSelector(selectUsersData);
+  const isProcessing = useAppSelector(exampleSlice.selectors.isProcessing);
+  const { id = '', name = '' } =
+    useAppSelector(exampleSlice.selectors.value) || {};
 
   useEffect(() => {
     dispatch(exampleSlice.actions.request());

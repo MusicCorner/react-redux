@@ -17,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.29.3",
     "babel-loader": "^8.2.2",
+    "create-async-slice": "^1.2.6",
     "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -29,6 +30,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
     "husky": "^7.0.2",
+    "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.3.0",
     "prettier": "^2.4.1",
     "react": "^17.0.2",
@@ -52,7 +54,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint-fix": "yarn lint --fix",
     "check-types": "tsc --noEmit",
-    "precommit": "yarn lint && yarn check-types",
+    "precommit": "npx lint-staged",
     "prepare": "husky install"
   },
   "devDependencies": {
