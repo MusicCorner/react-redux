@@ -87,6 +87,7 @@ module.exports = (env) => {
       },
       compress: true,
       port: 3000,
+      historyApiFallback: true,
     },
 
     plugins: [
